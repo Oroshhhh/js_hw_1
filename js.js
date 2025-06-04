@@ -1,83 +1,47 @@
-'use strict';
+const aboutBtn = document.getElementById('aboutBtn');
+const popup = document.getElementById('articleModal');
+const closeModalBtn = document.getElementById('closeModal');
 
+aboutBtn.addEventListener('click', () => {
+  popup.classList.add('active');
+});
 
+closeModalBtn.addEventListener('click', () => {
+  popup.classList.remove('active');
+});
 
-// //ex1
-// function countRabbits() {
-//   for (let i = 1; i <= 3; i++) {
-//     alert('Rabbit number ' + i);
-//   }
-// }
+const toggleBtn = document.getElementById('toggle-button');
+const services = document.getElementById('more-services');
 
-// function countRabbits() {
-//   for (let i = 1; i <= 3; i++) {
-//     alert('Rabbit number ' + i);
-//   }
-// }
-// const elem = document.getElementById('colorBox');
-// function changeColor() {
-//   elem.style.backgroundColor = 'blue';
-// }
-// function resetColor() {
-//   elem.style.backgroundColor = 'gray';
-// }
-// function resetColorr() {
-//   elem.style.backgroundColor = 'green';}
-//   function makeTitleBlue() {
-//   const title = document.getElementById('myTitle');
-//   title.style.color = 'blue';
-// }
+toggleBtn.addEventListener('click', () => {
+  if (services.style.display === 'none') {
+    services.style.display = 'block';
+    toggleBtn.textContent = 'Show Less';
+  } else {
+    services.style.display = 'none';
+    toggleBtn.textContent = 'Show More';
+  }
+});
 
-// //ex2
-// function hideTitle() {
-//   const title = document.getElementById('myTitle');
-//   title.style.display = 'none';
-// }
+function openModal(title, content) {
+  const modal = document.getElementById('articleModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalText = document.getElementById('modalText');
 
-// function showTitle() {
-//   const title = document.getElementById('myTitle');
-//   title.style.display = 'block';
-// }
+  modalTitle.textContent = title;
+  modalText.textContent = content;
+  modal.classList.add('active');
+}
 
+const sendFB = document.getElementById('sendFB');
+const disableFB = document.getElementById('disableFB');
+const fbAnswer = document.getElementById('FBAnswer');
 
-// //ex3
+sendFB.addEventListener('click', () => {
+  fbAnswer.textContent = 'Thank you for your feedback!';
+});
 
-// function changeText() {
-//   let elem = document.getElementById('lala');
-//   elem.textContent = prompt('Enter text');
-// }
-
-
-//ex1
-
-// const greet = (name) => "Hello, " + name + "!";
-
-//ex2
-
-
-// const formatName = (firstName, lastName) =>
-//   lastName.toUpperCase() + ", " + firstName[0].toUpperCase() + firstName.slice(1);
-
-
-
-//ex3
-
-// let func1 = () => {
-//   console.log('!!!');
-// };
-
-// func1();
-
-
-//ex4 ?
-
-
-//ex5
-
-
-// const numbers = [1, 2, 3, 4, 5];
-
-// const doubledNumbers = numbers.map(number => number * 2);
-
-// console.log(doubledNumbers);
-
+disableFB.addEventListener('click', () => {
+  sendFB.disabled = true;
+  fbAnswer.textContent = 'Feedback has been disabled.';
+});
